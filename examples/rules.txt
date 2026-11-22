@@ -1,0 +1,7 @@
+# PidHunt rules - one rule per line: TYPE PATTERN NAME
+# TYPE is one of: string, hex, regex
+# Lines starting with # are comments. Blank lines are skipped.
+# The NAME is shown in the report; keep it short, no spaces.
+string PIDHUNT_SECRET_MARKER_12345 secret-marker
+hex DEADBEEF01020304 hex-marker
+regex password=[A-Za-z0-9!]+ password-pattern

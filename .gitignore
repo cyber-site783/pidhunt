@@ -1,0 +1,5 @@
+# Built files and local reports - not part of the repo.
+examples/marker_program
+pidhunt-report.txt
+__pycache__/
+*.pyc

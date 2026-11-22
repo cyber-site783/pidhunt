@@ -1,0 +1,89 @@
+PidHunt scan report
+Target PID: 2840 (marker_program)
+Rules file: examples/rules.txt
+Readable regions scanned: 23
+Bytes read: 2809856
+Bytes skipped (unreadable): 24576
+Hits: 8
+
+Region entropy (HIGH means over 7.0 bits per byte):
+   1.54  ok    /home/hatch/workspace/cybersecurity-projects/pidhunt/examples/marker_program (0x61437c204000-0x61437c205000)
+   1.80  ok    /home/hatch/workspace/cybersecurity-projects/pidhunt/examples/marker_program (0x61437c205000-0x61437c206000)
+   1.24  ok    /home/hatch/workspace/cybersecurity-projects/pidhunt/examples/marker_program (0x61437c206000-0x61437c207000)
+   1.45  ok    /home/hatch/workspace/cybersecurity-projects/pidhunt/examples/marker_program (0x61437c207000-0x61437c208000)
+   0.04  ok    /home/hatch/workspace/cybersecurity-projects/pidhunt/examples/marker_program (0x61437c208000-0x61437c209000)
+   0.06  ok    [heap] (0x61438c9f7000-0x61438ca18000)
+   8.00  HIGH  [anonymous] (0x77393b198000-0x77393b1ab000)
+   4.73  ok    /usr/lib/x86_64-linux-gnu/libc.so.6 (0x77393b1ab000-0x77393b1d3000)
+   6.34  ok    /usr/lib/x86_64-linux-gnu/libc.so.6 (0x77393b1d3000-0x77393b35c000)
+   3.16  ok    /usr/lib/x86_64-linux-gnu/libc.so.6 (0x77393b35c000-0x77393b3ab000)
+   3.23  ok    /usr/lib/x86_64-linux-gnu/libc.so.6 (0x77393b3ab000-0x77393b3af000)
+   2.35  ok    /usr/lib/x86_64-linux-gnu/libc.so.6 (0x77393b3af000-0x77393b3b1000)
+   0.01  ok    [anonymous] (0x77393b3b1000-0x77393b3be000)
+   1.37  ok    [anonymous] (0x77393b3c9000-0x77393b3cb000)
+   0.00  ok    [vvar] (0x77393b3cb000-0x77393b3cf000)
+   0.00  ok    [vvar_vclock] (0x77393b3cf000-0x77393b3d1000)
+   5.10  ok    [vdso] (0x77393b3d1000-0x77393b3d3000)
+   3.47  ok    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 (0x77393b3d3000-0x77393b3d4000)
+   6.25  ok    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 (0x77393b3d4000-0x77393b3ff000)
+   5.83  ok    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 (0x77393b3ff000-0x77393b409000)
+   2.21  ok    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 (0x77393b409000-0x77393b40b000)
+   1.44  ok    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 (0x77393b40b000-0x77393b40d000)
+   0.00  ok    [stack] (0x7fff4d3e3000-0x7fff4d406000)
+
+[secret-marker] string: PIDHUNT_SECRET_MARKER_12345
+  Region: /home/hatch/workspace/cybersecurity-projects/pidhunt/examples/marker_program (0x61437c206000-0x61437c207000)
+  Offset: 0xc0 (absolute 0x61437c2060c0)
+  Matched: 50 49 44 48 55 4e 54 5f 53 45 43 52 45 54 5f 4d 41 52 4b 45 52 5f 31 32 33 34 35  |  PIDHUNT_SECRET_MARKER_12345
+  Context: 21 00 00 00 00 00 00 00 de ad be ef 01 02 03 04 50 49 44 48 55 4e 54 5f 53 45 43 52 45 54 5f 4d 41 52 4b 45 52 5f 31 32 33 34 35 00 01 1b 03 3b 38 00 00 00 06 00 00 00 44 ef ff  |  !...............PIDHUNT_SECRET_MARKER_12345....;8.......D..
+  Strings: PIDHUNT_SECRET_MARKER_12345
+
+[hex-marker] hex: DEADBEEF01020304
+  Region: /home/hatch/workspace/cybersecurity-projects/pidhunt/examples/marker_program (0x61437c206000-0x61437c207000)
+  Offset: 0xb8 (absolute 0x61437c2060b8)
+  Matched: de ad be ef 01 02 03 04  |  ........
+  Context: 3d 48 75 6e 74 65 72 32 21 00 00 00 00 00 00 00 de ad be ef 01 02 03 04 50 49 44 48 55 4e 54 5f 53 45 43 52 45 54 5f 4d  |  =Hunter2!...............PIDHUNT_SECRET_M
+  Strings: =Hunter2!, PIDHUNT_SECRET_M
+
+[password-pattern] regex: password=[A-Za-z0-9!]+
+  Region: /home/hatch/workspace/cybersecurity-projects/pidhunt/examples/marker_program (0x61437c206000-0x61437c207000)
+  Offset: 0xa0 (absolute 0x61437c2060a0)
+  Matched: 70 61 73 73 77 6f 72 64 3d 48 75 6e 74 65 72 32 21  |  password=Hunter2!
+  Context: 68 69 67 68 20 65 6e 74 72 6f 70 79 29 0a 00 00 70 61 73 73 77 6f 72 64 3d 48 75 6e 74 65 72 32 21 00 00 00 00 00 00 00 de ad be ef 01 02 03 04 50  |  high entropy)...password=Hunter2!...............P
+  Strings: high entropy), password=Hunter2!
+
+[secret-marker] string: PIDHUNT_SECRET_MARKER_12345
+  Region: /home/hatch/workspace/cybersecurity-projects/pidhunt/examples/marker_program (0x61437c207000-0x61437c208000)
+  Offset: 0xc0 (absolute 0x61437c2070c0)
+  Matched: 50 49 44 48 55 4e 54 5f 53 45 43 52 45 54 5f 4d 41 52 4b 45 52 5f 31 32 33 34 35  |  PIDHUNT_SECRET_MARKER_12345
+  Context: 21 00 00 00 00 00 00 00 de ad be ef 01 02 03 04 50 49 44 48 55 4e 54 5f 53 45 43 52 45 54 5f 4d 41 52 4b 45 52 5f 31 32 33 34 35 00 01 1b 03 3b 38 00 00 00 06 00 00 00 44 ef ff  |  !...............PIDHUNT_SECRET_MARKER_12345....;8.......D..
+  Strings: PIDHUNT_SECRET_MARKER_12345
+
+[hex-marker] hex: DEADBEEF01020304
+  Region: /home/hatch/workspace/cybersecurity-projects/pidhunt/examples/marker_program (0x61437c207000-0x61437c208000)
+  Offset: 0xb8 (absolute 0x61437c2070b8)
+  Matched: de ad be ef 01 02 03 04  |  ........
+  Context: 3d 48 75 6e 74 65 72 32 21 00 00 00 00 00 00 00 de ad be ef 01 02 03 04 50 49 44 48 55 4e 54 5f 53 45 43 52 45 54 5f 4d  |  =Hunter2!...............PIDHUNT_SECRET_M
+  Strings: =Hunter2!, PIDHUNT_SECRET_M
+
+[password-pattern] regex: password=[A-Za-z0-9!]+
+  Region: /home/hatch/workspace/cybersecurity-projects/pidhunt/examples/marker_program (0x61437c207000-0x61437c208000)
+  Offset: 0xa0 (absolute 0x61437c2070a0)
+  Matched: 70 61 73 73 77 6f 72 64 3d 48 75 6e 74 65 72 32 21  |  password=Hunter2!
+  Context: 68 69 67 68 20 65 6e 74 72 6f 70 79 29 0a 00 00 70 61 73 73 77 6f 72 64 3d 48 75 6e 74 65 72 32 21 00 00 00 00 00 00 00 de ad be ef 01 02 03 04 50  |  high entropy)...password=Hunter2!...............P
+  Strings: high entropy), password=Hunter2!
+
+[secret-marker] string: PIDHUNT_SECRET_MARKER_12345
+  Region: [heap] (0x61438c9f7000-0x61438ca18000)
+  Offset: 0x4a8 (absolute 0x61438c9f74a8)
+  Matched: 50 49 44 48 55 4e 54 5f 53 45 43 52 45 54 5f 4d 41 52 4b 45 52 5f 31 32 33 34 35  |  PIDHUNT_SECRET_MARKER_12345
+  Context: 0a 73 65 63 72 65 74 20 6d 61 72 6b 65 72 3a 20 50 49 44 48 55 4e 54 5f 53 45 43 52 45 54 5f 4d 41 52 4b 45 52 5f 31 32 33 34 35 0a 68 65 78 20 6d 61 72 6b 65 72 3a 20 44 45 41  |  .secret marker: PIDHUNT_SECRET_MARKER_12345.hex marker: DEA
+  Strings: secret marker: PIDHUNT_SECRET_MARKER_12345, hex marker: DEA
+
+[password-pattern] regex: password=[A-Za-z0-9!]+
+  Region: [heap] (0x61438c9f7000-0x61438ca18000)
+  Offset: 0x4f0 (absolute 0x61438c9f74f0)
+  Matched: 70 61 73 73 77 6f 72 64 3d 48 75 6e 74 65 72 32 21  |  password=Hunter2!
+  Context: 0a 70 61 73 73 77 6f 72 64 20 6c 69 6e 65 3a 20 70 61 73 73 77 6f 72 64 3d 48 75 6e 74 65 72 32 21 0a 72 61 6e 64 6f 6d 20 62 75 66 66 65 72 20 61  |  .password line: password=Hunter2!.random buffer a
+  Strings: password line: password=Hunter2!, random buffer a
+
